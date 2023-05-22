@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>timer </title>
+
+    
+    <style>
+        body{
+            background-color:#f1f1f2
+        }
+        .time{
+           top:35%;
+           left:35%;
+           position:fixed;
+           background-color:aliceblue;
+           padding:30px;
+           border-radius:10%;
+           box-shadow:rgb(0, 0, 0, 0.1) 0px 10px 50px;
+        }
+        span{
+            font-size: 3rem;;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div class="time">
+
+        <span class="H"></span>
+        <span class="M"></span><br>
+        <span class="date"></span>
+        
+    </div>
+
+    <script>
+        function stopwatch(){
+            var mydate= new Date();
+            var hr,min = (mydate.getMinutes()<10)?"0" + getmydate.getMinutes() : mydate.getMinutes(),
+                    sc= (mydate.getSeconds()< 10)?"0"+ mydate.getSeconds() : mydate.getSeconds(),
+                    m = (mydate.getHours()  >=12) ? 'am': 'pm' 
+         
+            if(mydate.getHours()== 0){
+                hr =12
+            }
+            else if(mydate.getHours() >12){
+                hr =mydate.getHours() - 12;
+            }else{
+                mydate.getHours()
+            }
+            var timetime= hr + ":" + min + ":" + sc 
+        
+            document.getElementsByClassName("H")[0].innerHTML = timetime;
+            document.getElementsByClassName('M')[0].innerHTML = m;
+
+            var day = ["sunday", 'monday', 'tuesday','wednesday', 'thursday', 'friday', 'saturday'],
+           month=['jan' , 'fab', 'mar', 'apr', 'may', 'jun', 'julay', 'aust', 'sept', 'nub' , 'dec'],
+                myday= mydate.getDate()
+
+             var nowday=day[mydate.getDay()] + ',' + month[mydate.getMonth()] + myday
+
+             document.getElementsByClassName('date')[0].innerHTML= nowday
+
+        }
+        stopwatch()
+
+        setInterval(function(){
+            stopwatch()
+        },1000)
+
+    </script>
+</body>
+</html>
